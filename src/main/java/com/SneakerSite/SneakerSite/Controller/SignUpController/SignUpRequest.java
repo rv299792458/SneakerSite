@@ -1,4 +1,4 @@
-package com.SneakerSite.SneakerSite.Controller;
+package com.SneakerSite.SneakerSite.Controller.SignUpController;
 
 
 import jakarta.validation.constraints.*;

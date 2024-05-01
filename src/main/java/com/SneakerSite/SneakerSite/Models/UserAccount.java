@@ -11,12 +11,14 @@ public class UserAccount {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String username;
     private String firstName;
     private String lastName;
     private String gender;
     private int age;
     private String password;
+    @Column(unique = true)
     private String email;
 
     public int getId() {

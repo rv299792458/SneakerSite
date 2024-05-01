@@ -1,5 +1,7 @@
-package com.SneakerSite.SneakerSite.Controller;
+package com.SneakerSite.SneakerSite.Controller.SignUpController;
 
+import com.SneakerSite.SneakerSite.Controller.MessageApiResponse;
+import com.SneakerSite.SneakerSite.Controller.RestApiResponse;
 import com.SneakerSite.SneakerSite.Models.UserAccount;
 import com.SneakerSite.SneakerSite.Repository.UserRepository;
 import jakarta.validation.Valid;
@@ -12,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-public class SignInController {
+public class SignUpController {
 
     @Autowired
     private UserRepository userRepo;
@@ -21,15 +23,15 @@ public class SignInController {
     public RestApiResponse SignUp(@RequestBody @Valid SignUpRequest signUpRequest)
     {
         try {
-            List<UserAccount> existingByUserName =  userRepo.findByUsername(signUpRequest.getUsername());
-            if(existingByUserName.size()>=1)
+            UserAccount existingByUserName =  userRepo.findByUsername(signUpRequest.getUsername());
+            if(!Objects.isNull(existingByUserName))
             {
                 return RestApiResponse.buildFail(new MessageApiResponse("102","UserName Already Exist "));
             }
 
-            List<UserAccount> existingByEmail =  userRepo.findByEmail(signUpRequest.getEmail());
+            UserAccount existingByEmail =  userRepo.findByEmail(signUpRequest.getEmail());
 
-            if(existingByEmail.size()>=1)
+            if(!Objects.isNull(existingByEmail))
             {
                 return RestApiResponse.buildFail(new MessageApiResponse("103","Email Already Used "));
             }

@@ -17,7 +17,19 @@ public class UserAccount {
     private String lastName;
     private String gender;
     private int age;
+    //hashed Password
     private String password;
+
+    private String passwordSalt;
+
+    public String getPasswordSalt() {
+        return passwordSalt;
+    }
+
+    public void setPasswordSalt(String passwordSalt) {
+        this.passwordSalt = passwordSalt;
+    }
+
     @Column(unique = true)
     private String email;
 

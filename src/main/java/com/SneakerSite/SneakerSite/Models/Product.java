@@ -6,6 +6,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -27,8 +28,10 @@ public class Product {
     private Double price;
     private String priceUnit;
     private Double discount;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String productImage;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private List<ProductSizeCount> productSizeCountList;
-
 
 }

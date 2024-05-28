@@ -1,5 +1,7 @@
 package com.SneakerSite.SneakerSite.Controller.ProductListController;
 
+import com.SneakerSite.SneakerSite.Controller.DTO.ProductDTO;
+import com.SneakerSite.SneakerSite.Controller.DTO.ProductSizeDTO;
 import com.SneakerSite.SneakerSite.Models.ProductSizeCount;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.SneakerSite.SneakerSite.Models.Product;
@@ -12,7 +14,7 @@ import java.util.List;
 @Data
 public class ProductListResponse {
 private long totalCount;
-private List<Product> products;
+private List<ProductDTO> products;
 //
 //@Data
 //static class ProductDTO{
@@ -40,38 +42,37 @@ public static ProductListResponse buildCountFlow( long totalCount)
     return response;
 }
 
-public static ProductListResponse buildListFlow(List<Product> products)
-{
+public static ProductListResponse buildListFlow(List<Product> products) {
     ProductListResponse response = new ProductListResponse();
-//    List<ProductDTO>productDTOList = new ArrayList<>();
-//    for(Product p : products)
-//    {
-//        ProductDTO pdto = new ProductDTO();
-//        pdto.setProductCode(p.getProductCode());
-//        pdto.setName(p.getName());
-//        pdto.setProductDetails(p.getProductDetails());
-//        pdto.setPrice(p.getPrice());
-//        pdto.setPriceUnit(p.getPriceUnit());
-//        pdto.setDiscount(p.getDiscount());
-//        List<ProductSizeCountDTO>productSizeCountDTOList =  new ArrayList<>();
+    List<ProductDTO> productDTOList = new ArrayList<>();
+    for (Product p : products) {
+        ProductDTO pdto = new ProductDTO();
+        pdto.setProductCode(p.getProductCode());
+        pdto.setName(p.getName());
+        pdto.setProductDetails(p.getProductDetails());
+        pdto.setPrice(p.getPrice());
+        pdto.setPriceUnit(p.getPriceUnit());
+        pdto.setDiscount(p.getDiscount());
+        pdto.setProductImage(p.getProductImage());
+        List<ProductSizeDTO> productSizeCountDTOList = new ArrayList<>();
 //
-//        for(ProductSizeCount pc : p.getProductSizeCountList())
-//        {
-//            ProductSizeCountDTO psDto = new ProductSizeCountDTO();
-//            psDto.setProductCount(pc.getProductCount());
-//            psDto.setProductSize(pc.getProductSize());
-//            productSizeCountDTOList.add(psDto);
-//        }
-//        pdto.setProductSizeCount(productSizeCountDTOList);
-//        productDTOList.add(pdto);
-//    }
+        for (ProductSizeCount pc : p.getProductSizeCountList()) {
+            ProductSizeDTO psDto = new ProductSizeDTO();
+            psDto.setProductCount(pc.getProductCount());
+            psDto.setProductSize(pc.getProductSize());
+            productSizeCountDTOList.add(psDto);
+        }
+        pdto.setProductSizeCountList(productSizeCountDTOList);
+        productDTOList.add(pdto);
+    }
 
-    response.setProducts(products);
-    return response;
+        response.setProducts(productDTOList);
+        return response;
+    }
 }
 
 
 
-}
+
 
 

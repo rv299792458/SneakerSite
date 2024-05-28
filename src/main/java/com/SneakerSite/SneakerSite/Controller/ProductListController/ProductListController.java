@@ -1,16 +1,14 @@
 package com.SneakerSite.SneakerSite.Controller.ProductListController;
 
+import com.SneakerSite.SneakerSite.Controller.DTO.ProductDTO;
 import com.SneakerSite.SneakerSite.Controller.RestApiResponse;
 import com.SneakerSite.SneakerSite.Models.Product;
 import com.SneakerSite.SneakerSite.Repository.ProductRepositry;
 import com.SneakerSite.SneakerSite.Repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.List;
 import static com.SneakerSite.SneakerSite.Utils.SessionIdValidity.isValidSession;
 
 @RestController
-public class ProductList {
+public class ProductListController {
 
     @Autowired
     private SessionRepository sessionRepo;

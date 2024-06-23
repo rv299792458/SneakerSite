@@ -1,0 +1,11 @@
+Going to process cashback for orderid
+orderId - MBK-b94e5a
+
+
+   // Process cash backs for the respective transactions
+            merchantKafkaMessageProducerService.produce(requestMemberDebitDTO);
+            //Grand Slam
+
+-> entry point
+    protected IRedirectFlowResponse initiateDebitProcess(MerchantRedirectFlowProcessDTO merchantRedirectFlowProcessDTO,
+                                                         RedirectFlowTransactionLog redirectFlowTransactionLog) {
